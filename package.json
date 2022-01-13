@@ -6,7 +6,7 @@
 	"scripts": {
 		"start:dev": "nodemon --exec babel-node src/index.js",
 		"test": "",
-		"prestart": "yarn run clean && babel ./src --out-dir build",
+		"prestart": "$npm_execpath run clean && babel ./src --out-dir build",
 		"start": "node ./build/index.js",
 		"clean": "rm -rf build"
 	},
