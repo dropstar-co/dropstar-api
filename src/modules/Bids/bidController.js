@@ -11,11 +11,11 @@ class BidController {
 
             const allBids = await Bid.findAll({where:{userID:req.params.id}})
 
-            console.log(allBids)
+
             
             return responseHandler(res,"NFT loaded",200,allBids)
         } catch (error) {
-            console.log(error.message)
+
             errorHandler.handleError(error.message, 500, res)
         }
     }
