@@ -6,7 +6,7 @@
 	"scripts": {
 		"start:dev": "nodemon --exec babel-node src/index.js",
 		"test": "",
-		"prestart": "yarn run clean && babel ./src --out-dir build",
+		"prestart": "$npm_execpath run clean && babel ./src --out-dir build",
 		"start": "node ./build/index.js",
 		"clean": "rm -rf build"
 	},
@@ -31,6 +31,7 @@
 		"express": "^4.17.1",
 		"express-validator": "^6.5.0",
 		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.29.1",
 		"mongoose": "^5.9.15",
 		"pg": "^8.1.0",
 		"pg-hstore": "^2.3.3",
