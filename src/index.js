@@ -37,10 +37,10 @@ const swaggerDefinition = {
       name: 'Licensed Under MIT',
       url: 'https://spdx.org/licenses/MIT.html',
     },
-    contact: {
-      name: 'JSONPlaceholder',
-      url: 'https://jsonplaceholder.typicode.com',
-    },
+    // contact: {
+    //   name: 'JSONPlaceholder',
+    //   url: 'https://jsonplaceholder.typicode.com',
+    // },
   },
   components: {
     securitySchemes: {
