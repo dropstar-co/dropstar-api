@@ -30,7 +30,8 @@ class nftController {
               [
                 "name",
                 "SocialLink",
-                "SocialLabel"
+                "SocialLabel",
+                "ImageLink"
               ],
             
           },
