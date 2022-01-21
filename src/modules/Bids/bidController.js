@@ -20,6 +20,20 @@ class BidController {
         }
     }
 
+    static async getNftBids(req,res) {
+        try {
+
+            const allBids = await Bid.findAll({where:{nftID:req.params.id}, order:[
+                ['updatedAt',"DESC"]
+            ]})
+
+            return responseHandler(res,"NFT loaded",200,allBids)
+        } catch (error) {
+
+            errorHandler.handleError(error.message, 500, res)
+        }
+    }
+
     static async completeBid(req,res) {
         try {
             const dateBid = moment()

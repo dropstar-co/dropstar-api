@@ -59,7 +59,11 @@ const swaggerDefinition = {
     {
       url: 'http://dropstarstaging-env.eba-ezcsnqme.us-east-2.elasticbeanstalk.com/api/v1',
       description: 'Staging server',
-    }
+    },
+    // {
+    //   url: 'http://localhost:8000/api/v1',
+    //   description: 'Development server',
+    // }
     
   ],
 };
