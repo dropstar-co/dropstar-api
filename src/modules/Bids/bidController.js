@@ -45,7 +45,7 @@ class BidController {
                 DateBid:dateBid
 
             })
-            return responseHandler(res,"NFT loaded",200,newBid)
+            return responseHandler(res,"Your Bid has been submitted",200,newBid)
         } catch (error) {
             errorHandler.handleError(error.message, 500, res)
         }
