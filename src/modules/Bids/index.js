@@ -10,35 +10,26 @@ import BidController from './bidController';
  *  Bid:
  *   type: object
  *   properties:
- *    name:
+ *    userID:
  *     type: string
- *     description: name of the nft
- *     example: 'Jayaramachandran'
- *    password:
+ *     description: id of the user
+ *     example: '3'
+ *    nftID:
  *     type: string
- *     description: date of joining of the parent
- *     example: '3050manu'
- *    email:
+ *     description: id of the nft being bid on
+ *     example: '1'
+ *    AmountETH:
  *     type: string
- *     description: email of the parent
- *     example: 'jayaramachandran@whizpath.com'
- *    childFullName:
+ *     description: amount of eth being bid
+ *     example: '0.0045'
+ *    isWinner:
+ *     type: boolean
+ *     description:  whether a user is a winner or not
+ *     example: false
+ *    DateBid:
  *     type: string
- *     description: gender of the parent
- *     example: 'male'
- *    dateOfBirth:
- *     type: string
- *     description: dateOfBirth of the child
- *     example: '2020-08-30'
- *  ParentLogin: 
- *   type: object
- *   properties:
- *    email: 
- *     type:  string
- *     example: 'jayaramachandran@whizpath.com'
- *    password: 
- *     type:  string
- *     example: '3050manu'
+ *     description: date in which bid was made
+ *     example: '2022-01-23'
  */
 const router = Router() 
 /**
@@ -88,6 +79,25 @@ router.get('/user/bids/:id',BidController.getBids)
  */
 router.get('/nfts/bids/:id',BidController.getNftBids)
 
+/**
+  * @swagger
+  * /completeBid:
+  *  post:
+  *   summary: Complete nft bid functionality
+  *   tags: 
+  *     - Bid functionality
+  *   description: Complete nft bid functionality
+  *   requestBody:
+  *    content:
+  *     application/json:
+  *      schema:
+  *       $ref: '#/definitions/Bid'
+  *   responses:
+  *    201:
+  *     description: Bid completed successfully
+  *    500:
+  *     description: failure in creating complete bid
+  */
 router.post('/completeBid',  BidController.completeBid)
 
 export default router;
