@@ -46,7 +46,7 @@ const router = Router()
  *      description: id of the nft
  *      example: 2
  *   tags: 
- *        -  Bid functionality
+ *        -  User functionality
  *   description: Get all user bids
  *   responses:
  *    200:
@@ -57,7 +57,7 @@ const router = Router()
 router.get('/user/bids/:id',BidController.getBids)
 /**
  * @swagger
- * /nfts/bids/{id}:
+ * /bid/nft/{id}:
  *  get:
  *   summary: Get all nft bids
  *   parameters:
@@ -77,11 +77,11 @@ router.get('/user/bids/:id',BidController.getBids)
  *    500:
  *     description: error
  */
-router.get('/nfts/bids/:id',BidController.getNftBids)
+router.get('/bid/nft/:id',BidController.getNftBids)
 
 /**
   * @swagger
-  * /completeBid:
+  * /bid/complete:
   *  post:
   *   summary: Complete nft bid functionality
   *   tags: 
@@ -98,6 +98,6 @@ router.get('/nfts/bids/:id',BidController.getNftBids)
   *    500:
   *     description: failure in creating complete bid
   */
-router.post('/completeBid',  BidController.completeBid)
+router.post('/bid/complete',  BidController.completeBid)
 
 export default router;

@@ -19,7 +19,7 @@ import AuthController from './authController';
 const Router = express.Router();
  /**
   * @swagger
-  * /getUserLogged:
+  * /user/info:
   *  post:
   *   summary: Get user logged 
   *   tags: 
@@ -37,7 +37,7 @@ const Router = express.Router();
   *     description: failure in creating parent
   */
 Router.post(
-    '/getUserLogged',
+    '/user/info',
     AuthController.createUser
 );
 
