@@ -29,14 +29,14 @@ class AuthController {
         return res.status(201).json({
           success: true,
           message: "User registered successfully.",
-          user: data,
+          user: user,
         });
       }
       const data = {
         userExists, 
         token
       }
-      return responseHandler(res, "Logged success", 200, data);
+      return responseHandler(res, "Logged success", 200, userExists);
     } catch (error) {
       errorHandler.handleError(error.message, 500, res);
     }
