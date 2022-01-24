@@ -42,7 +42,7 @@ const router = Router()
 
 /**
  * @swagger
- * /discover:
+ * /nft/discover:
  *  get:
  *   summary: This is the discover api
  *   tags: 
@@ -54,12 +54,12 @@ const router = Router()
  *    500:
  *     description: error
  */
-router.get('/discover', nftController.getDiscover)
+router.get('/nft/discover', nftController.getDiscover)
 
 
 /**
  * @swagger
- * /nfts/{id}:
+ * /nft/{id}:
  *  get:
  *   summary: Get a single nft
  *   parameters:
@@ -79,6 +79,6 @@ router.get('/discover', nftController.getDiscover)
  *    500:
  *     description: error
  */
-router.get('/nfts/:id',  nftController.getNft)
+router.get('/nft/:id',  nftController.getNft)
 
 export default router;
