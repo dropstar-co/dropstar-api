@@ -13,6 +13,8 @@ class AuthController {
       const userExists = await models.User.findOne({
         where: { Email: req.body.Email },
       });
+      const token = jwt.sign({email:req.body.Email}, process.env.SECRET_KEY,{expiresIn:'7d'})
+      console.log(token)
       if (!userExists) {
         const user = await models.User.create({
           Email: req.body.Email,
@@ -20,14 +22,21 @@ class AuthController {
         });
 
         // SendGridHelper.sendConfirmationMail(token, req.body.email);
-
+        const data = {
+          user, 
+          token
+        }
         return res.status(201).json({
           success: true,
           message: "User registered successfully.",
-          user: result,
+          user: data,
         });
       }
-      return responseHandler(res, "Logged success", 200, userExists);
+      const data = {
+        userExists, 
+        token
+      }
+      return responseHandler(res, "Logged success", 200, data);
     } catch (error) {
       errorHandler.handleError(error.message, 500, res);
     }
