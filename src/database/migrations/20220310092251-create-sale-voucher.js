@@ -1,22 +1,30 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable('SaleVouchers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      VenlyUID: {
+      paymentRecipientAddress: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: false,
       },
-      Email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
+      startDate: {
+        type: Sequelize.DATE,
+      },
+      deadline: {
+        type: Sequelize.DATE,
+      },
+      rsv: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+      },
+      s: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+      },
+      v: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
       },
       createdAt: {
         allowNull: false,
@@ -26,13 +34,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      walletAddress: {
-        allowNull: true,
-        type: Sequelize.STRING,
-      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
+    return queryInterface.dropTable('SaleVouchers');
   },
 };
