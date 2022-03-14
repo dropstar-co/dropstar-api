@@ -17,7 +17,7 @@ module.exports = {
       deadline: {
         type: Sequelize.DATE,
       },
-      rsv: {
+      r: {
         type: Sequelize.ARRAY(Sequelize.STRING),
       },
       s: {
