@@ -14,14 +14,14 @@ class AuthController {
         where: { Email: req.body.Email },
       });
       const token = jwt.sign({email:req.body.Email}, process.env.SECRET_KEY,{expiresIn:'7d'})
-      console.log(token)
+
       if (!userExists) {
         const user = await models.User.create({
           Email: req.body.Email,
           VenlyUID: req.body.VenlyUID,
         });
 
-        // SendGridHelper.sendConfirmationMail(token, req.body.email);
+        await SendGridHelper.sendConfirmationMail(req.body.Email);
         const data = {
           user, 
           token
