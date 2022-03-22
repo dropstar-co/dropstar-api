@@ -79,17 +79,17 @@ class SendGridHelper {
       }
     );
     //ES8
-    (async () => {
-      try {
-        await sgMail.send(msg);
-      } catch (error) {
-        console.error(error);
+    // (async () => {
+    //   try {
+    //     await sgMail.send(msg);
+    //   } catch (error) {
+    //     console.error(error);
 
-        if (error.response) {
-          console.error(error.response.body);
-        }
-      }
-    })();
+    //     if (error.response) {
+    //       console.error(error.response.body);
+    //     }
+    //   }
+    // })();
   }
 }
 
