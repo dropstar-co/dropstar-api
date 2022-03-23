@@ -13,10 +13,14 @@ class AuthController {
       const userExists = await models.User.findOne({
         where: { Email: req.body.Email },
       });
+
       const token = jwt.sign({ email: req.body.Email }, process.env.SECRET_KEY, {
         expiresIn: '7d',
       });
       console.log(token);
+
+      const token = jwt.sign({email:req.body.Email}, process.env.SECRET_KEY,{expiresIn:'7d'})
+
       if (!userExists) {
         const user = await models.User.create({
           Email: req.body.Email,
@@ -24,7 +28,7 @@ class AuthController {
           walletAddress: req.body.walletAddress,
         });
 
-        // SendGridHelper.sendConfirmationMail(token, req.body.email);
+        await SendGridHelper.sendConfirmationMail(req.body.Email);
         const data = {
           user,
           token,
