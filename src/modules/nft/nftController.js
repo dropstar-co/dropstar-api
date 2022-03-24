@@ -36,6 +36,9 @@ class nftController {
             
           },
         ],
+         order:[
+                ['EndDate',"ASC"]
+            ]
       });
       return responseHandler(res, "NFT loaded", 200, allNfts);
     } catch (error) {
