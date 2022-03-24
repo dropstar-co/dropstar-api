@@ -10,7 +10,14 @@ class BidController {
     static async getBids(req,res) {
         try {
 
-            const allBids = await Bid.findAll({where:{userID:req.params.id}})
+            const allBids = await Bid.findAll({where:{userID:req.params.id},include:[
+                
+                {
+                    model:Nft,
+                    required:false,
+                    attributes:['id','name']  
+                }
+                ]})
 
 
             
