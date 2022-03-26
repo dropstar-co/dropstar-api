@@ -18,7 +18,7 @@ class nftController {
             "artistID",
             "PolygonAddress",
             "minimumBidETH",
-            "ImageLink",
+            // "ImageLink",
             "isVisible",
             "EndDate",
           ],
