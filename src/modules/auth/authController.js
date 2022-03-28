@@ -48,6 +48,38 @@ class AuthController {
       errorHandler.handleError(error.message, 500, res);
     }
   }
+  static async updateUser(req, res) {
+    try {
+      const userExists = await models.User.findOne({
+        where: { Email: req.body.Email },
+      });
+
+      let user;
+
+      if (!userExists)
+        user = await models.User.create({
+          Email: req.body.Email,
+          VenlyUID: req.body.VenlyUID,
+          walletAddress: req.body.walletAddress,
+        });
+      else {
+        user = userExists;
+      }
+
+      user.walletAddress = req.body.walletAddress;
+
+      await user.save();
+
+      return res.status(200).json({
+        success: true,
+        message: 'User updated successfully.',
+        user: user,
+      });
+    } catch (error) {
+      console.log({ error });
+      errorHandler.handleError(error.message, 500, res);
+    }
+  }
 }
 
 export default AuthController;
