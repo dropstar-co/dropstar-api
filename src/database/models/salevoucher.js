@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 module.exports = (sequelize, DataTypes) => {
   const SaleVoucher = sequelize.define(
-    "SaleVoucher",
+    'SaleVoucher',
     {
       paymentRecipientAddress: DataTypes.STRING,
       startDate: DataTypes.DATE,
@@ -10,10 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       s: DataTypes.ARRAY(DataTypes.STRING),
       v: DataTypes.ARRAY(DataTypes.STRING),
     },
-    {}
+    {},
   );
   SaleVoucher.associate = function (models) {
-    SaleVoucher.belongsTo(models.Bid);
+    SaleVoucher.belongsTo(models.Bid, {
+      foreignKey: 'bidID',
+    });
   };
   return SaleVoucher;
 };
