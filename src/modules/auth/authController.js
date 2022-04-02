@@ -48,6 +48,7 @@ class AuthController {
       errorHandler.handleError(error.message, 500, res);
     }
   }
+
   static async updateUser(req, res) {
     try {
       const userExists = await models.User.findOne({
@@ -77,6 +78,33 @@ class AuthController {
       });
     } catch (error) {
       console.log({ error });
+      errorHandler.handleError(error.message, 500, res);
+    }
+  }
+
+  static async searchByWalletAddress(req, res) {
+    try {
+      const { walletAddress } = req.params;
+      console.log({ walletAddress });
+      const userExists = await models.User.findOne({ where: { walletAddress } });
+
+      if (!userExists) {
+        errorHandler.handleError(`User with wallet ${walletAddress} not found`, 400, res);
+        return;
+      }
+
+      const token = jwt.sign({ email: req.body.Email }, process.env.SECRET_KEY, {
+        expiresIn: '7d',
+      });
+      console.log(token);
+
+      //Hide sensitive details to webapp.
+      userExists.Email = `${userExists.walletAddress}@dropstar.co`;
+      userExists.VenlyUID = userExists.walletAddress;
+
+      return responseHandler(res, 'Logged success', 200, userExists);
+    } catch (error) {
+      console.log(error);
       errorHandler.handleError(error.message, 500, res);
     }
   }

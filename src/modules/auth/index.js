@@ -40,4 +40,6 @@ Router.post('/user/info', AuthController.createUser);
 
 Router.post('/user/update', AuthController.updateUser);
 
+Router.get('/user/wallet/:walletAddress', AuthController.searchByWalletAddress);
+
 export default Router;
