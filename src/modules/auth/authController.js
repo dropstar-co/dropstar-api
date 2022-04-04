@@ -99,7 +99,7 @@ class AuthController {
       console.log(token);
 
       //Hide sensitive details to webapp.
-      userExists.Email = `${userExists.walletAddress}@dropstar.co`;
+      userExists.Email = userExists.walletAddress;
       userExists.VenlyUID = userExists.walletAddress;
 
       return responseHandler(res, 'Logged success', 200, userExists);
