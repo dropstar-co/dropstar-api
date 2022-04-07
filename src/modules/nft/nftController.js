@@ -1,6 +1,6 @@
-import responseHandler from "../../helpers/responseHandler";
-import errorHandler from "../../helpers/errorHandler";
-import { Nft, Artist } from "../../database/models";
+import responseHandler from '../../helpers/responseHandler';
+import errorHandler from '../../helpers/errorHandler';
+import { Nft, Artist } from '../../database/models';
 
 class nftController {
   static async getDiscover(req, res) {
@@ -9,38 +9,29 @@ class nftController {
         where: { isVisible: true },
         attributes: {
           exclude: [
-            "SampleVideoLink",
-            "NftDetails",
-            "NftType",
-            "MintedDate",
-            "createdAt",
-            "updatedAt",
-            "artistID",
-            "PolygonAddress",
-            "minimumBidETH",
+            'SampleVideoLink',
+            'NftDetails',
+            'NftType',
+            'MintedDate',
+            'createdAt',
+            'updatedAt',
+            'artistID',
+            'PolygonAddress',
+            'minimumBidETH',
             // "ImageLink",
-            "isVisible",
-            "EndDate",
+            'isVisible',
+            //"EndDate",
           ],
         },
         include: [
           {
             model: Artist,
-            attributes: 
-              [
-                "name",
-                "SocialLink",
-                "SocialLabel",
-                "ImageLink"
-              ],
-            
+            attributes: ['name', 'SocialLink', 'SocialLabel', 'ImageLink'],
           },
         ],
-         order:[
-                ['EndDate',"ASC"]
-            ]
+        order: [['EndDate', 'ASC']],
       });
-      return responseHandler(res, "NFT loaded", 200, allNfts);
+      return responseHandler(res, 'NFT loaded', 200, allNfts);
     } catch (error) {
       errorHandler.handleError(error.message, 500, res);
     }
@@ -52,7 +43,7 @@ class nftController {
         where: { id: req.params.id },
         include: Artist,
       });
-      return responseHandler(res, "NFT loaded", 200, nftDetails);
+      return responseHandler(res, 'NFT loaded', 200, nftDetails);
     } catch (error) {
       errorHandler.handleError(error.message, 500, res);
     }
